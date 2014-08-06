@@ -1,0 +1,8 @@
+D:\GitHub2\GraduateCheck\GraduateCheck\bin\Debug\GraduateCheck.dll
+D:\GitHub2\GraduateCheck\GraduateCheck\bin\Debug\GraduateCheck.pdb
+D:\GitHub2\GraduateCheck\GraduateCheck\obj\Debug\GraduateCheck.csprojResolveAssemblyReference.cache
+D:\GitHub2\GraduateCheck\GraduateCheck\obj\Debug\GraduateCheck.dll
+D:\GitHub2\GraduateCheck\GraduateCheck\obj\Debug\GraduateCheck.pdb
+D:\GitHub2\GraduateCheck\GraduateCheck\obj\Debug\GraduateCheck.Checker.resources
+D:\GitHub2\GraduateCheck\GraduateCheck\obj\Debug\GraduateCheck.csproj.GenerateResource.Cache
+D:\GitHub2\GraduateCheck\GraduateCheck\bin\Debug\GraduateCheck.dll.config
