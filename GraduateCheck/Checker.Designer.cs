@@ -28,15 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnOK = new DevComponents.DotNetBar.ButtonX();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.txtArts = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.dgvArts = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.colArts = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArts)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -44,7 +47,7 @@
             this.btnOK.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnOK.BackColor = System.Drawing.Color.Transparent;
             this.btnOK.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnOK.Location = new System.Drawing.Point(241, 301);
+            this.btnOK.Location = new System.Drawing.Point(239, 408);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -57,7 +60,7 @@
             this.btnExit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.Location = new System.Drawing.Point(322, 301);
+            this.btnExit.Location = new System.Drawing.Point(320, 408);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -70,14 +73,14 @@
             this.groupPanel1.BackColor = System.Drawing.Color.Transparent;
             this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel1.Controls.Add(this.txtArts);
+            this.groupPanel1.Controls.Add(this.dgvArts);
             this.groupPanel1.Controls.Add(this.labelX4);
             this.groupPanel1.Controls.Add(this.labelX3);
             this.groupPanel1.Controls.Add(this.labelX2);
             this.groupPanel1.Controls.Add(this.labelX1);
             this.groupPanel1.Location = new System.Drawing.Point(13, 13);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(384, 282);
+            this.groupPanel1.Size = new System.Drawing.Size(384, 389);
             // 
             // 
             // 
@@ -110,21 +113,45 @@
             this.groupPanel1.TabIndex = 2;
             this.groupPanel1.Text = "判斷規則";
             // 
-            // txtArts
+            // dgvArts
+            // 
+            this.dgvArts.BackgroundColor = System.Drawing.Color.White;
+            this.dgvArts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colArts});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvArts.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvArts.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dgvArts.Location = new System.Drawing.Point(4, 119);
+            this.dgvArts.Name = "dgvArts";
+            this.dgvArts.RowTemplate.Height = 24;
+            this.dgvArts.Size = new System.Drawing.Size(366, 240);
+            this.dgvArts.TabIndex = 5;
+            // 
+            // colArts
+            // 
+            this.colArts.HeaderText = "美學課程科目清單";
+            this.colArts.Name = "colArts";
+            this.colArts.Width = 323;
+            // 
+            // labelX4
             // 
             // 
             // 
             // 
-            this.txtArts.Border.Class = "TextBoxBorder";
-            this.txtArts.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtArts.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::GraduateCheck.Properties.Settings.Default, "ArtSubjects", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtArts.Location = new System.Drawing.Point(4, 119);
-            this.txtArts.Multiline = true;
-            this.txtArts.Name = "txtArts";
-            this.txtArts.Size = new System.Drawing.Size(365, 124);
-            this.txtArts.TabIndex = 3;
-            this.txtArts.Text = global::GraduateCheck.Properties.Settings.Default.ArtSubjects;
-            this.txtArts.WatermarkText = "請輸入美學科目名稱(以逗號區隔各科目)";
+            this.labelX4.BackgroundStyle.Class = "";
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Location = new System.Drawing.Point(4, 60);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(366, 23);
+            this.labelX4.TabIndex = 4;
+            this.labelX4.Text = "所有選修課程,限選修一次";
             // 
             // labelX3
             // 
@@ -165,24 +192,11 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "每週節次大於4節的課程科目,修習滿一學期計0.5學分";
             // 
-            // labelX4
-            // 
-            // 
-            // 
-            // 
-            this.labelX4.BackgroundStyle.Class = "";
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(4, 60);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(366, 23);
-            this.labelX4.TabIndex = 4;
-            this.labelX4.Text = "所有選修課程,限選修一次";
-            // 
             // Checker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(415, 331);
+            this.ClientSize = new System.Drawing.Size(415, 443);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.groupPanel1);
@@ -190,6 +204,7 @@
             this.Name = "Checker";
             this.Text = "畢業資格檢查";
             this.groupPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArts)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -201,8 +216,9 @@
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtArts;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX4;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dgvArts;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colArts;
     }
 }

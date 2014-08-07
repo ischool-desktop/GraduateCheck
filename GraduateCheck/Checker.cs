@@ -19,6 +19,9 @@ namespace GraduateCheck
         private List<string> _ids;
         private List<string> _ArtSubjects;
         private BackgroundWorker _BW;
+        private const string _ConfigCode = "GraduateCheckArts";
+        Campus.Configuration.ConfigData _CD;
+
         public Checker()
         {
             InitializeComponent();
@@ -30,6 +33,14 @@ namespace GraduateCheck
             _BW = new BackgroundWorker();
             _BW.DoWork += new DoWorkEventHandler(BW_DoWork);
             _BW.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BW_Completed);
+
+            _CD = Campus.Configuration.Config.User[_ConfigCode];
+
+            foreach(string art in _CD["美學清單"].Split(','))
+            {
+                if(!string.IsNullOrWhiteSpace(art))
+                    dgvArts.Rows.Add(art);
+            }
         }
 
         private void BW_Completed(object sender, RunWorkerCompletedEventArgs e)
@@ -78,6 +89,7 @@ namespace GraduateCheck
                     student_obj_dic.Add(student.ID, new StudentObj(student, cr));
             }
 
+            //測試用(複製學期歷程)
             //QueryHelper q = new QueryHelper();
             //UpdateHelper u = new UpdateHelper();
 
@@ -172,27 +184,15 @@ namespace GraduateCheck
                 index++;
             }
 
-            AutoFitterOptions option = new AutoFitterOptions();
-            option.OnlyAuto = true;
-            wb.Worksheets[0].AutoFitColumns(option);
+            wb.Worksheets[0].AutoFitColumns();
 
             e.Result = wb;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            CD_Save();
             FormLock(false);
-
-            Properties.Settings.Default.Save();
-
-            if(!string.IsNullOrWhiteSpace(txtArts.Text))
-            {
-                foreach(string subj in txtArts.Text.Split(','))
-                {
-                    if(!string.IsNullOrWhiteSpace(subj) && !_ArtSubjects.Contains(subj))
-                        _ArtSubjects.Add(subj);
-                }
-            }
 
             if (_BW.IsBusy)
                 MessageBox.Show("系統忙碌中,請稍後再試...");
@@ -205,9 +205,34 @@ namespace GraduateCheck
             this.Close();
         }
 
-        public void FormLock(bool b)
+        private void FormLock(bool b)
         {
-            txtArts.Enabled = b;
+            dgvArts.Enabled = b;
+        }
+
+        private void CD_Save()
+        {
+            List<string> arts = new List<string>();
+            foreach (DataGridViewRow row in dgvArts.Rows)
+            {
+                string subj = row.Cells[0].Value + "";
+                //不給打逗號
+                subj = subj.Replace(",", "");
+
+                if (row.IsNewRow || string.IsNullOrWhiteSpace(subj))
+                    continue;
+
+                if (!arts.Contains(subj))
+                    arts.Add(subj);
+
+                if (!_ArtSubjects.Contains(subj))
+                    _ArtSubjects.Add(subj);
+            }
+
+            string art = string.Join(",", arts);
+
+            _CD["美學清單"] = art;
+            _CD.Save();
         }
     }
 }
